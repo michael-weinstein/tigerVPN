@@ -30,7 +30,10 @@ def checkPing(server, count = 3):
         for field in lineFields:
             if field.startswith("time="):
                 timeCollection.append(float(field.replace("time=","")))
-    return round(statistics.mean(timeCollection))
+    if timeCollection:
+        return round(statistics.mean(timeCollection))
+    else:
+        return 999
 
 def getLoginFile(workingDirectory):
     import os
